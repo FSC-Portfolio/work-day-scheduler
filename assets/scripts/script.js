@@ -1,8 +1,8 @@
 "use strict";
 
 // CONSTANTS
-const TIME_START = 6;  // Ahh to start at nine!
-const TIME_FINISH = 14;  // This poor sod works through to six pm.
+const TIME_START = 9;  // Ahh to start at nine!
+const TIME_FINISH = 18;  // This poor sod works through to six pm.
 const KEY_CALENDAR_NOTES = "calendar_notes";
 const PREFIX_TA = "ta-";
 const PREFIX_ID = "hour-";

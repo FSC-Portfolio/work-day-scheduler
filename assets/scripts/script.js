@@ -63,16 +63,22 @@ function createTimeBlock() {
 
         // Assemble the parts for each row.
         let rowTimeBlock = $('<div class="row">');
+        let rowId = "hour-" + moment(blockMoment).get("hour");
         let divHour = $('<div class="col-1 hour">');
         let textarea = $('<textarea class="col-10 description">');
         let saveButton = $('<div class="col-1 saveBtn">');
 
         // Carefully construct the row.
+        rowTimeBlock.attr("id", rowId);
         textarea.addClass(determineTextareaClass(blockMoment));
-        textarea.attr("id", "desc-h-" + moment(blockMoment).get("hour"));
         saveButton.html('<a href="#"><i class="far fa-save"></i></a>');
         divHour.html('<span>' + blockMoment.format("hA") + '</span>');
         rowTimeBlock.append(divHour, textarea, saveButton);
+
+        // Add any existing notes.
+        if (calendarNotes[0][rowId]) {
+            textarea.text(calendarNotes[0][rowId]);
+        }
 
         // Append to the container
         $('.container').append(rowTimeBlock);
@@ -92,7 +98,7 @@ dayFinish = setMomentToZero(TIME_FINISH);
 calendarNotes = loadData();
 console.log(calendarNotes);
 
-storeData("desc-h-9", "whasssup");
-storeData("desc-h-8", "hiloooo");
+storeData("hour-9", "whasssup");
+storeData("hour-8", "hiloooo");
 displayTime("#currentDay");
 createTimeBlock();

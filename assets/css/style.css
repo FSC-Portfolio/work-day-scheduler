@@ -43,8 +43,8 @@ textarea{
 }
 
 .hour span {
-  position: relative;
-  top: -15px;
+  /*position: relative;*/
+  /*top: -15px;*/
   float: right;
 }
 
@@ -75,6 +75,7 @@ textarea{
 .saveBtn a i {
   color: white;
   vertical-align: middle;
+  align-self: center;
 }
 
 .saveBtn i:hover {

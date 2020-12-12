@@ -8,7 +8,7 @@ const KEY_CALENDAR_NOTES = "calendar_notes";
 // VARIABLES
 let dayStart;
 let dayFinish;
-let calendarNotes = [];
+let calendarNotes = [{}];
 
 // FUNCTIONS
 function loadData() {
@@ -21,7 +21,8 @@ function loadData() {
 
 function storeData(noteKey, noteValue) {
     // Stores a single note to local storage as a dictionary object so it can be overwritten.
-    calendarNotes[noteKey] = noteValue;
+    calendarNotes[0][noteKey] = noteValue;
+    // console.log(JSON.stringify(calendarNotes));
     localStorage.setItem(KEY_CALENDAR_NOTES, JSON.stringify(calendarNotes));
 }
 
@@ -71,7 +72,6 @@ function createTimeBlock() {
         textarea.attr("id", "desc-h-" + moment(blockMoment).get("hour"));
         saveButton.html('<a href="#"><i class="far fa-save"></i></a>');
         divHour.html('<span>' + blockMoment.format("hA") + '</span>');
-        // textarea.text("okies");
         rowTimeBlock.append(divHour, textarea, saveButton);
 
         // Append to the container

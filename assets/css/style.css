@@ -15,7 +15,7 @@ textarea{
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
+  background-color: grey;
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
@@ -42,6 +42,12 @@ textarea{
   border-top: 1px dashed #000000;
 }
 
+.hour span {
+  position: relative;
+  top: -15px;
+  float: right;
+}
+
 .past {
   background-color: #d3d3d3;
   color: white;
@@ -57,12 +63,18 @@ textarea{
   color: white;
 }
 
+/*TODO cannot for the life of me center these gremlins - vertically or horizontally? */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+}
+
+.saveBtn a i {
+  color: white;
+  vertical-align: middle;
 }
 
 .saveBtn i:hover {

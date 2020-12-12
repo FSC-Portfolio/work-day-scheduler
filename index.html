@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
@@ -26,10 +26,54 @@
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
-      <p id="currentDay" class="lead"></p>
+      <p id="currentDay" class="lead">Saturday, December 12th</p>
     </header>
     <div class="container">
-      <!-- Timeblocks go here -->
+      <!--Satisfy html5 requirements, the textareas _should_ have a filled form attribute-->
+      <form id="holder"></form>
+<!--Future example-->
+      <div class="row">
+
+        <div class="col-1 hour">
+          <span>9am</span>
+        </div>
+
+        <textarea class="col-10 future description" form="holder">future</textarea>
+
+        <div class="col-1 saveBtn">
+          <a href="#"><i class="far fa-save"></i></a>
+        </div>
+
+      </div>
+<!--Past example-->
+      <div class="row">
+        <div class="col-1 hour">
+          <span>9am</span>
+        </div>
+
+        <textarea class="col-10 past description" form="holder">past</textarea>
+
+        <div class="col-1 saveBtn">
+          <a href="#"><i class="far fa-save"></i></a>
+        </div>
+      </div>
+
+<!--Present example-->
+      <div class="row">
+
+        <div class="col-1 hour">
+          <span>9am</span>
+        </div>
+
+        <textarea class="col-10 present description" form="holder">present</textarea>
+
+        <div class="col-1 saveBtn">
+          <a href="#"><i class="far fa-save"></i></a>
+        </div>
+
+      </div>
+
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -52,9 +52,10 @@ function createTimeBlock() {
 
         // Carefully construct the row.
         textarea.addClass(determineTextareaClass(blockMoment));
+        textarea.attr("id", "desc-h-" + moment(blockMoment).get("hour"));
         saveButton.html('<a href="#"><i class="far fa-save"></i></a>');
         divHour.html('<span>' + blockMoment.format("hA") + '</span>');
-        textarea.text("okies");
+        // textarea.text("okies");
         rowTimeBlock.append(divHour, textarea, saveButton);
 
         // Append to the container
@@ -71,10 +72,6 @@ function createTimeBlock() {
 // Set the start and end times in moment format.
 dayStart = setMomentToZero(TIME_START);
 dayFinish = setMomentToZero(TIME_FINISH);
-// console.log(dayStart);
-// console.log(dayFinish);
-// console.log(moment(dayStart).isBefore(moment()));
-// console.log(moment().isBefore(moment(dayFinish)));
 
 displayTime("#currentDay");
 createTimeBlock();

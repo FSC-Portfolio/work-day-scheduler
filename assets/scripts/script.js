@@ -4,6 +4,8 @@
 const TIME_START = 6;  // Ahh to start at nine!
 const TIME_FINISH = 14;  // This poor sod works through to six pm.
 const KEY_CALENDAR_NOTES = "calendar_notes";
+const PREFIX_TA = "ta-";
+const PREFIX_ID = "hour-";
 
 // VARIABLES
 let dayStart;
@@ -63,7 +65,8 @@ function createTimeBlock() {
 
         // Assemble the parts for each row.
         let rowTimeBlock = $('<div class="row">');
-        let rowId = "hour-" + moment(blockMoment).get("hour");
+        let rowId = PREFIX_ID + moment(blockMoment).get("hour");
+        let textareaId = PREFIX_TA + rowId;
         let divHour = $('<div class="col-1 hour">');
         let textarea = $('<textarea class="col-10 description">');
         let saveButton = $('<div class="col-1 saveBtn">');
@@ -71,6 +74,7 @@ function createTimeBlock() {
         // Carefully construct the row.
         rowTimeBlock.attr("id", rowId);
         textarea.addClass(determineTextareaClass(blockMoment));
+        textarea.attr("id", textareaId);
         saveButton.html('<a href="#"><i class="far fa-save"></i></a>');
         divHour.html('<span>' + blockMoment.format("hA") + '</span>');
         rowTimeBlock.append(divHour, textarea, saveButton);
@@ -94,11 +98,16 @@ function createTimeBlock() {
 // Set the start and end times in moment format.
 dayStart = setMomentToZero(TIME_START);
 dayFinish = setMomentToZero(TIME_FINISH);
-
 calendarNotes = loadData();
 console.log(calendarNotes);
 
-storeData("hour-9", "whasssup");
-storeData("hour-8", "hiloooo");
 displayTime("#currentDay");
 createTimeBlock();
+
+// Listen for the click and store a note.
+$('.saveBtn').click(function (event){
+    event.preventDefault();
+    let tempId = $(this).parent().attr("id");
+    let tempNote = $(this).prev("#" + PREFIX_TA + tempId).val();
+    storeData(tempId, tempNote);
+})

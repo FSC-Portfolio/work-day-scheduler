@@ -13,8 +13,8 @@ NA
 ## Setup
 NA
 
-## KNown bugs
-- No bugs at this stage. (No development either!)
+## Known bugs
+- Cannot centre the save icons, vertically or horizontally.
 
 ## Files and Directories
 

@@ -3,12 +3,28 @@
 // CONSTANTS
 const TIME_START = 6;  // Ahh to start at nine!
 const TIME_FINISH = 14;  // This poor sod works through to six pm.
+const KEY_CALENDAR_NOTES = "calendar_notes";
 
 // VARIABLES
 let dayStart;
 let dayFinish;
+let calendarNotes = [];
 
 // FUNCTIONS
+function loadData() {
+    // Loads any stored notes.
+    if (localStorage.getItem(KEY_CALENDAR_NOTES)) {
+        calendarNotes = JSON.parse(localStorage.getItem(KEY_CALENDAR_NOTES));
+    }
+    return calendarNotes;
+}
+
+function storeData(noteKey, noteValue) {
+    // Stores a single note to local storage as a dictionary object so it can be overwritten.
+    calendarNotes[noteKey] = noteValue;
+    localStorage.setItem(KEY_CALENDAR_NOTES, JSON.stringify(calendarNotes));
+}
+
 function displayTime(displayElement) {
     // Update any element with the date in format specified below.
     $(displayElement).text(moment().format('dddd, MMMM Do'))
@@ -73,5 +89,10 @@ function createTimeBlock() {
 dayStart = setMomentToZero(TIME_START);
 dayFinish = setMomentToZero(TIME_FINISH);
 
+calendarNotes = loadData();
+console.log(calendarNotes);
+
+storeData("desc-h-9", "whasssup");
+storeData("desc-h-8", "hiloooo");
 displayTime("#currentDay");
 createTimeBlock();

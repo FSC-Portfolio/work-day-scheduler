@@ -98,9 +98,10 @@ function createTimeBlock() {
 // Set the start and end times in moment format.
 dayStart = setMomentToZero(TIME_START);
 dayFinish = setMomentToZero(TIME_FINISH);
+
+// Load the data and build the page page.
 calendarNotes = loadData();
 console.log(calendarNotes);
-
 displayTime("#currentDay");
 createTimeBlock();
 
